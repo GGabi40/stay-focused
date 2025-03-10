@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* 
+font-family: "Roboto", sans-serif;
+*/
+
 body {
     background-color: #2e2e2e;
     color: #e0e0e0;
@@ -14,15 +19,15 @@ body {
 }
 
 h1 {
+    font-family: "Roboto", sans-serif;;
     font-size: 20px;
     color: #e0e0e0;
     margin-bottom: 20px;
 }
 
 .button-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -60,6 +65,7 @@ button:focus {
 }
 
 #timer {
+    font-family: monospace;
     font-size: 50px;
     font-weight: bold;
     color: #4caf50;
