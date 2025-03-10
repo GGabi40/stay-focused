@@ -1,0 +1,26 @@
+{
+  "name": "stay-focused",
+  "version": "1.0.0",
+  "description": "A simple Pomodoro timer app.",
+  "keywords": [
+    "pomodoro"
+  ],
+  "homepage": "https://github.com/GGabi40/stay-focused#readme",
+  "bugs": {
+    "url": "https://github.com/GGabi40/stay-focused/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GGabi40/stay-focused.git"
+  },
+  "license": "ISC",
+  "author": "GGabi40",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^35.0.1"
+  }
+}

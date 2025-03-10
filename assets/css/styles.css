@@ -1,0 +1,95 @@
+body {
+    background-color: #2e2e2e;
+    color: #e0e0e0;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 20px;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    background-color: #333;
+    color: #fff
+}
+
+button:hover {
+    background-color: #4caf50;
+    color: white;
+    transform: scale(1.05);
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Contenedor del temporizador */
+.timer-container {
+    background-color: #444;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 300px;
+}
+
+#timer {
+    font-size: 50px;
+    font-weight: bold;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+/* Estilos para botones de control */
+#start {
+    background-color: #008CBA;
+    color: white;
+}
+
+#pause {
+    background-color: #ff9800;
+    color: white;
+}
+
+#stop {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Transiciones suaves */
+button:active {
+    transform: scale(0.98);
+}

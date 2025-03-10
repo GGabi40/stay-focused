@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concentración</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>Arranque a Concentrarse</h1>
+        <div class="button-container">
+            <button onclick="startTimer(25, 5)">25x5</button>
+            <button onclick="startTimer(40, 10)">40x10</button>
+            <button onclick="startTimer(50, 10)">50x10</button>
+            <button onclick="startTimer(60, 20)">60x20</button>
+        </div>
+        
+        <div class="timer-container">
+            <div id="timer">00:00</div>
+            <div class="controls">
+                <button id="start" onclick="startTimer(25, 5)">Iniciar</button>
+                <button id="pause" onclick="pauseTimer()">Pausar</button>
+                <button id="stop" onclick="stopTimer()">Detener</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/renderer.js"></script>
+</body>
+</html>
