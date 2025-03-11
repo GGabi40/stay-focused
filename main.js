@@ -14,9 +14,8 @@ const createWindow = () => {
         webPreferences: {
             nodeIntegration: true
         },
-        icon: resolve(__dirname, "assets", "img", "icon32x32px.ico") // windows icon
+        icon: resolve(__dirname, "assets", "img", "icon256x256px.png") // windows icon
     })
-    win.setIcon(resolve(__dirname, "assets", "img", "icon-bar.png"));
 
     win.loadFile('index.html');
 }
