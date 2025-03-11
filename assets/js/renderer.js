@@ -82,6 +82,7 @@ function processing() {
     }
 
     error.classList.remove('show');
+    startTimer(customTimeWork, customTimeRest);
     closeModal();
 }
 
@@ -92,21 +93,88 @@ let isPaused = false;
 let timeRemaining;
 let workTime;
 let restTime;
+let contadorWork = 0;
+let contadorRest = 0;
+const workingOrResting = document.getElementById('workingOrResting');
 
 function startTimer(work, rest) {
+    document.getElementById("beginning").style.display = "none";
+    document.querySelector(".timer-container").style.display = "block";
+    contadorWork++;
+    document.getElementById('workCount').innerText = contadorWork;
+
+    const workingPhrases = [
+        'Shh... Estoy leyendo',
+        '¡Es momento de concentrarnos!',
+        '¡Ya falta menos!',
+        '¡Sigamos adelante!', 
+        '¡No hay tiempo que perder!', 
+        '¡A concentrarse!', 
+        'Vamos que se puede', 
+        'Casi lo logro', 
+        'Todo está en marcha', 
+        '¡Concentración al máximo!'
+    ]
+    const index = Math.floor(Math.random() * workingPhrases.length);
+    workingOrResting.innerText = workingPhrases[index];
+
     workTime = work;
     restTime = rest;
+
     clearInterval(timerInterval);
     let time = work * 60;
     timeRemaining = time;
     updateDisplay(time);
+
+    document.getElementById('animation').src = './assets/img/work.gif'
+    document.getElementById('animation').alt = 'Coffee - Work GIF'
+
     timerInterval = setInterval(() => {
         if (!isPaused) {
             timeRemaining--;
             updateDisplay(timeRemaining);
+
             if (timeRemaining <= 0) {
                 clearInterval(timerInterval);
-                alert(`Tiempo de descanso: ${rest} minutos`);
+                document.getElementById('animation').src = './assets/img/rest.gif'
+                document.getElementById('animation').alt = 'Take a Rest GIF'
+                document.getElementById('workAudio').play();
+
+                startRestTimer(rest);
+            }
+        }
+    }, 1000);
+}
+
+function startRestTimer(rest) {
+    let time = rest * 60;
+    timeRemaining = time;
+    updateDisplay(time);
+    contadorRest++;
+    document.getElementById('restCount').innerText = contadorRest;
+
+    const restingPhrases = [
+        'Un descansito',
+        'Relájate un poco', 
+        'Respira profundo', 
+        'Un poco de descanso nunca viene mal', 
+        'Recarga energías', 
+        '¡Tómate un respiro!', 
+        '¡Un break para seguir con todo!',
+        'Tiempo para desconectar'
+    ]
+    const index = Math.floor(Math.random() * restingPhrases.length);
+    workingOrResting.innerText = restingPhrases[index];
+
+    timerInterval = setInterval(() => {
+        if(!isPaused) {
+            timeRemaining--;
+            updateDisplay(timeRemaining);
+
+            if(timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('restAudio').play();
+                startTimer(workTime, restTime);
             }
         }
     }, 1000);
@@ -121,13 +189,28 @@ function updateDisplay(time) {
 
 function pauseTimer() {
     isPaused = !isPaused;
+    workingOrResting.innerText = 'TIEMPO EN PAUSA';
     document.getElementById('pause').innerText = isPaused ? 'Reanudar' : 'Pausar';
 }
 
 function stopTimer() {
+    workingOrResting.innerText = 'El Tiempo se detuvo...';
     clearInterval(timerInterval);
     document.getElementById('timer').innerText = '00:00';
     isPaused = false;
     document.getElementById('pause').innerText = 'Pausar';
+    contadorRest = 0;
+    contadorWork = 0;
 }
 
+function getBack() {
+    document.getElementById("beginning").style.display = "block";
+    document.querySelector(".timer-container").style.display = "none";
+
+    clearInterval(timerInterval);
+    isPaused = false;
+    document.getElementById('pause').innerText = 'Pausar';
+
+    contadorRest = 0;
+    contadorWork = 0;
+}

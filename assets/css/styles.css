@@ -157,6 +157,22 @@ button:focus {
     gap: 10px;
 }
 
+.controls button {
+    margin: auto;
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+.animation img {
+    aspect-ratio: 1;
+    height: 150px;
+}
+
+.getBack button {
+    padding: 8px 10px;
+    font-size: 18px;
+}
+
 /* Estilos para botones de control */
 #start {
     background-color: #008CBA;
@@ -176,4 +192,32 @@ button:focus {
 /* Transiciones suaves */
 button:active {
     transform: scale(0.98);
+}
+
+/* Estilos para los contadores */
+.count {
+    display: flex;
+    gap: 4px;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-family: "Roboto", sans-serif;
+    color: #e0e0e0;
+}
+
+.count div {
+    background-color: #333;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 45%;
+    text-align: center;
+}
+
+.working {
+    background-color: #008CBA;
+}
+
+.resting {
+    background-color: #ff9800;
 }

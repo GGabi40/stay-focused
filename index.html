@@ -31,14 +31,29 @@
         </div>
 
         <div class="timer-container" style="display:none;">
+            <div class="getBack">
+                <button onclick="getBack()">Volver</button>
+            </div>
+            <h2 id="workingOrResting"></h2>
+            <div class="animation">
+                <img src="" alt="" id="animation">
+            </div>
             <div id="timer">00:00</div>
             <div class="controls">
                 <button id="start" onclick="startTimer(25, 5)">Iniciar</button>
                 <button id="pause" onclick="pauseTimer()">Pausar</button>
                 <button id="stop" onclick="stopTimer()">Detener</button>
             </div>
+
+            <div class="count">
+                <div class="working">Trabajos: <span id="workCount">0</span></div>
+                <div class="resting">Descansos: <span id="restCount">0</span></div>
+            </div>
         </div>
     </div>
+
+    <audio src="./assets/mp3/working.mp3" id="workAudio" preload="auto"></audio>
+    <audio src="./assets/mp3/rest.mp3" id="restAudio" preload="auto"></audio>
 
     <script src="./assets/js/renderer.js"></script>
 </body>
