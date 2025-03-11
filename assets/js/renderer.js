@@ -1,3 +1,13 @@
+/* Title app */
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      document.title = "¡Enfoquemonos! 😢⏰  |  Stay Focused";
+    } else {
+      document.title = "Stay Focused 🤓⏰";
+    }
+});
+
+
 let timerInterval;
 let isPaused = false;
 let timeRemaining;
