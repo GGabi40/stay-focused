@@ -9,15 +9,28 @@
 </head>
 <body>
     <div class="app-container">
-        <h1>Arranque a Concentrarse</h1>
-        <div class="button-container">
-            <button onclick="startTimer(25, 5)">☺️ 25x5</button>
-            <button onclick="startTimer(40, 10)">😎 40x10</button>
-            <button onclick="startTimer(50, 10)">🤩 50x10</button>
-            <button onclick="startTimer(60, 20)">🤓 60x20</button>
+        <div id="beginning">
+            <h1>Arranque a Concentrarse</h1>
+            <div class="button-container">
+                <button onclick="startTimer(25, 5)">☺️ 25x5</button>
+                <button onclick="startTimer(40, 10)">😎 40x10</button>
+                <button onclick="startTimer(50, 10)">🤩 50x10</button>
+                <button onclick="startTimer(60, 20)">🤓 60x20</button>
+            </div>
+            <div class="custom-timer">
+                <button onclick="showModal()">🤔 Personalizar...</button>
+                <dialog id="dialogBox">
+                    <button onclick="closeModal()" id="closeModal">X</button>
+                    <h2>Ingrese el Tiempo Personalizado:</h2>
+                    <div id="error"></div>
+                    <input type="number" name="work" id="work" placeholder="Concentración (minutos)">
+                    <input type="number" name="rest" id="rest" placeholder="Descanso (minutos)">
+                    <button onclick="processing()" id="ready">Listo!</button>
+                </dialog>
+            </div>
         </div>
-        
-        <div class="timer-container">
+
+        <div class="timer-container" style="display:none;">
             <div id="timer">00:00</div>
             <div class="controls">
                 <button id="start" onclick="startTimer(25, 5)">Iniciar</button>

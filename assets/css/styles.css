@@ -13,12 +13,18 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
     text-align: center;
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 h1 {
+    font-family: "Roboto", sans-serif;;
+    font-size: 26px;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+h2 {
     font-family: "Roboto", sans-serif;;
     font-size: 20px;
     color: #e0e0e0;
@@ -32,9 +38,80 @@ h1 {
     margin-bottom: 20px;
 }
 
-button {
+.custom-timer {
+    font-size: 22px;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.429);
+}
+
+dialog {
+    display: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+dialog[open] {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+    background-color: #141414;
+    border: none;
+    border-radius: 8px;
+}
+
+#closeModal {
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    margin: 0;
+    padding: 12px 20px;
+    width: fit-content;
+    position: absolute;
+    left: 0;
+}
+
+#closeModal:hover {
+    font-size: 18px;
+    transform: scale(1.04);
+}
+
+#error {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.3s ease;
+    color: rgb(246, 121, 121);
+    padding-bottom: 6px;
+    font-family: 'Roboto', sans;
+    font-size: 12px;
+}
+
+#error.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+input[type="number"], #ready {
     padding: 12px 24px;
-    font-size: 16px;
+    font-size: 14px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+}
+
+#rest {
+    margin: 10px 0;
+}
+
+button {
+    padding: 22px 44px;
+    font-size: 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -43,6 +120,7 @@ button {
     background-color: #333;
     color: #fff
 }
+
 
 button:hover {
     background-color: #4caf50;
