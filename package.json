@@ -29,7 +29,8 @@
     "appId": "com.ggabi.stayfocused",
     "productName": "StayFocused",
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "assets/img/icon.ico"
     },
     "mac": {
       "category": "public.app-category.productivity"
