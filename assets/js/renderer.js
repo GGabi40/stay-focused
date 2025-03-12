@@ -246,11 +246,10 @@ function getBack() {
 
     clearInterval(timerInterval);
     isPaused = false;
-    document.getElementById('pause').innerText = 'Pausar';
-    isPaused = false;
     isWorkTime = false;
     isRestTime = false;
     isStopped = false;
+    document.getElementById('pause').innerText = 'Pausar';
 
     contadorRest = 0;
     contadorWork = 0;
