@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu } from 'electron';
+import { app, BrowserWindow, Menu, dialog, shell } from 'electron';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -98,6 +98,31 @@ const menu = [
                 click: () => {
                     const focusedWindow = BrowserWindow.getFocusedWindow();
                     if(focusedWindow) { focusedWindow.setFullScreen(false) };
+                }
+            }
+        ],
+    },
+    {
+        label: 'Ayuda',
+        submenu: [
+            {
+                label: 'Sobre',
+                click: () => {
+                    const focusedWindow = BrowserWindow.getFocusedWindow();
+                    if ( focusedWindow ) {
+                        dialog.showMessageBox(focusedWindow, {
+                            type: 'info',
+                            title: 'Sobre la App',
+                            message: 'Desarrollado con 💖 por GGabi40.',
+                            buttons: ['OK', 'Ver en GitHub'],
+                            defaultId: 0,
+                            cancelId: 0
+                        }).then(res => {
+                            if (res.response === 1) { // Si presiona "Ver en GitHub"
+                                shell.openExternal('https://github.com/GGabi40');
+                            }
+                        })
+                     }
                 }
             }
         ]
