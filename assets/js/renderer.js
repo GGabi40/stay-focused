@@ -1,13 +1,3 @@
-/* Title app */
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      document.title = "¡Enfoquemonos! 😢⏰  |  Stay Focused";
-    } else {
-      document.title = "Stay Focused 🤓⏰";
-    }
-});
-
-
 /* Modal - Custom Timer */
 const dialogBox = document.getElementById('dialogBox');
 function showModal() {
@@ -57,7 +47,7 @@ function processing() {
         return;
     }
 
-    if(customTimeWork <= 10) {
+    if(customTimeWork < 10) {
         error.classList.add('show');
         error.innerText = 'El tiempo de Concentración debe ser mayor a 10 minutos.';
         return;
@@ -163,8 +153,15 @@ function startRestTimer(rest) {
 function updateDisplay(time) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    document.getElementById('timer').innerText = 
-        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    document.getElementById('timer').innerText = formattedTime;
+
+    if (isWorkTime) {
+        document.title = `🔵 ${formattedTime} - Trabajando... | Stay Focused`;
+    } else if (isRestTime) {
+        document.title = `🟢 ${formattedTime} - Descansando... | Stay Focused`;
+    }
 }
 
 function beginTimer() {
