@@ -161,6 +161,8 @@ function updateDisplay(time) {
         document.title = `🔵 ${formattedTime} - Trabajando... | Stay Focused`;
     } else if (isRestTime) {
         document.title = `🟢 ${formattedTime} - Descansando... | Stay Focused`;
+    } else {
+        document.title = `Stay Focused`;
     }
 }
 
@@ -183,6 +185,7 @@ function pauseTimer() {
     isPaused = !isPaused;
     changePhrase(isPaused)
     document.getElementById('pause').innerText = isPaused ? 'Reanudar' : 'Pausar';
+    document.title = `TIEMPO EN PAUSA | Stay Focused`;
 }
 
 function changePhrase() {
@@ -233,6 +236,7 @@ function stopTimer() {
     document.getElementById('pause').innerText = 'Pausar';
     contadorRest = 0;
     contadorWork = 0;
+    document.title = `El tiempo se detuvo... | Stay Focused`;
 
     changePhrase();
 }
@@ -247,6 +251,7 @@ function getBack() {
     isRestTime = false;
     isStopped = false;
     document.getElementById('pause').innerText = 'Pausar';
+    document.title = `Stay Focused`;
 
     contadorRest = 0;
     contadorWork = 0;
