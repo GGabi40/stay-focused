@@ -90,6 +90,9 @@ function processing() {
 /* Timer */
 let timerInterval;
 let isPaused = false;
+let isWorkTime = false;
+let isRestTime = false;
+let isStopped = false;
 let timeRemaining;
 let workTime;
 let restTime;
@@ -103,23 +106,11 @@ function startTimer(work, rest) {
     contadorWork++;
     document.getElementById('workCount').innerText = contadorWork;
 
-    const workingPhrases = [
-        'Shh... Estoy leyendo',
-        '¡Es momento de concentrarnos!',
-        '¡Ya falta menos!',
-        '¡Sigamos adelante!', 
-        '¡No hay tiempo que perder!', 
-        '¡A concentrarse!', 
-        'Vamos que se puede', 
-        'Casi lo logro', 
-        'Todo está en marcha', 
-        '¡Concentración al máximo!'
-    ]
-    const index = Math.floor(Math.random() * workingPhrases.length);
-    workingOrResting.innerText = workingPhrases[index];
-
+    isWorkTime = !isWorkTime;
     workTime = work;
     restTime = rest;
+
+    changePhrase()
 
     clearInterval(timerInterval);
     let time = work * 60;
@@ -153,18 +144,7 @@ function startRestTimer(rest) {
     contadorRest++;
     document.getElementById('restCount').innerText = contadorRest;
 
-    const restingPhrases = [
-        'Un descansito',
-        'Relájate un poco', 
-        'Respira profundo', 
-        'Un poco de descanso nunca viene mal', 
-        'Recarga energías', 
-        '¡Tómate un respiro!', 
-        '¡Un break para seguir con todo!',
-        'Tiempo para desconectar'
-    ]
-    const index = Math.floor(Math.random() * restingPhrases.length);
-    workingOrResting.innerText = restingPhrases[index];
+    changePhrase();
 
     timerInterval = setInterval(() => {
         if(!isPaused) {
@@ -187,20 +167,77 @@ function updateDisplay(time) {
         `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
+function beginTimer() {
+    if(isPaused) {
+        return;
+    } else {
+        isStopped = false;
+        isPaused = false;
+        isRestTime = false;
+        isWorkTime = false;
+        contadorWork = 0;
+        startTimer(workTime, restTime);
+    }
+}
+
 function pauseTimer() {
+    if (isStopped) return;
+
     isPaused = !isPaused;
-    workingOrResting.innerText = 'TIEMPO EN PAUSA';
+    changePhrase(isPaused)
     document.getElementById('pause').innerText = isPaused ? 'Reanudar' : 'Pausar';
 }
 
+function changePhrase() {
+    const workingPhrases = [
+        'Shh... Estoy leyendo',
+        '¡Es momento de concentrarnos!',
+        '¡Ya falta menos!',
+        '¡Sigamos adelante!', 
+        '¡No hay tiempo que perder!', 
+        '¡A concentrarse!', 
+        'Vamos que se puede', 
+        'Casi lo logro', 
+        'Todo está en marcha', 
+        '¡Concentración al máximo!'
+    ]
+
+    const restingPhrases = [
+        'Un descansito',
+        'Relájate un poco', 
+        'Respira profundo', 
+        'Un poco de descanso nunca viene mal', 
+        'Recarga energías', 
+        '¡Tómate un respiro!', 
+        '¡Un break para seguir con todo!',
+        'Tiempo para desconectar'
+    ]
+
+    if(isStopped) {
+        workingOrResting.innerText = 'El tiempo se detuvo...';
+    } else if(isPaused) {
+        workingOrResting.innerText = 'TIEMPO EN PAUSA';
+    } else if (isWorkTime) {
+        const index = Math.floor(Math.random() * workingPhrases.length);
+        workingOrResting.innerText = workingPhrases[index];
+    } else {
+        const index = Math.floor(Math.random() * restingPhrases.length);
+        workingOrResting.innerText = restingPhrases[index];
+    }
+}
+
 function stopTimer() {
-    workingOrResting.innerText = 'El Tiempo se detuvo...';
+    if (isStopped) return;
+
     clearInterval(timerInterval);
     document.getElementById('timer').innerText = '00:00';
     isPaused = false;
+    isStopped = !isStopped;
     document.getElementById('pause').innerText = 'Pausar';
     contadorRest = 0;
     contadorWork = 0;
+
+    changePhrase();
 }
 
 function getBack() {
