@@ -27,6 +27,7 @@ const createMainWindow = () => {
         height: 600,
         alwaysOnTop: true,
         transparent: true,
+        resizable: true,
         show: false, // evita que aparezca mientras se cargue
         webPreferences: {
             nodeIntegration: true

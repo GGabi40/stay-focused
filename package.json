@@ -40,7 +40,7 @@
       "target": [
         "nsis"
       ],
-      "icon": "assets/img/icon.ico"
+      "icon": "assets\\img\\icon256x256px.png"
     },
     "mac": {
       "category": "public.app-category.productivity"
