@@ -15,7 +15,7 @@ Puedes probar la versión web de Stay Focused aquí:
 
 ## 📥 Descarga la Aplicación
 Si prefieres la versión de escritorio, descárgala aquí:
-[📥 Descargar Stay Focused](https://drive.google.com/uc?id=1Vdg7EvayyE9hgo8fSwPuBDr3LXejH6E7&export=download)
+[📥 Descargar Stay Focused](https://drive.google.com/uc?id=14bB6LJDdTl2qj9XiWqyhzLLHf3hULIrj&export=download)
 
 ---
 

@@ -8,6 +8,19 @@ body {
     color: #e0e0e0;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8a8a8a;
+}
+
 .app-container {
     display: flex;
     flex-direction: column;
@@ -220,4 +233,52 @@ button:active {
 
 .resting {
     background-color: #ff9800;
+}
+
+@media screen and (max-width: 300px), (max-height: 300px) {
+    .app-container {
+        padding: 5px;
+    }
+
+    h1, h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .timer-container {
+        padding: 10px;
+        max-width: 180px;
+    }
+
+    .animation img {
+        height: 50px;
+    }
+
+    #timer {
+        font-size: 30px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .controls button, .getBack button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .animation img {
+        height: 80px;
+    }
+
+    .count div {
+        padding: 6px;
+        font-size: 12px;
+    }
 }

@@ -23,10 +23,13 @@ const createLoadingWindow = () => {
 
 const createMainWindow = () => {
     mainWindow = new BrowserWindow({
-        width:400,
+        width: 400,
         height: 600,
+        minHeight: 260,
+        minWidth: 250,
+        maxWidth: 800,
+        maxHeight: 1000,
         alwaysOnTop: true,
-        transparent: true,
         resizable: true,
         show: false, // evita que aparezca mientras se cargue
         webPreferences: {
